@@ -3,12 +3,9 @@ import 'package:http/http.dart' as http;
 import '../config/api_config.dart';
 import '../models/weather_model.dart';
 
-/// Weather API Service
-/// 
-/// Handles all API calls to OpenWeatherMap
+
 
 class WeatherApiService {
-  /// Fetch weather data by city name
   Future<WeatherModel> getWeatherByCity(
     String city, {
     String units = 'metric',
@@ -35,7 +32,6 @@ class WeatherApiService {
     }
   }
   
-  /// Fetch weather data by coordinates
   Future<WeatherModel> getWeatherByCoordinates(
     double lat,
     double lon, {
@@ -61,7 +57,6 @@ class WeatherApiService {
     }
   }
   
-  /// Fetch weather for multiple cities
   Future<List<WeatherModel>> getWeatherForCities(
     List<String> cities, {
     String units = 'metric',
@@ -73,7 +68,6 @@ class WeatherApiService {
         final weather = await getWeatherByCity(city, units: units);
         weatherList.add(weather);
       } catch (e) {
-        // Skip cities that fail to load
         print('Failed to load weather for $city: $e');
       }
     }
@@ -82,7 +76,6 @@ class WeatherApiService {
   }
 }
 
-/// Custom Exception for Weather API errors
 class WeatherException implements Exception {
   final String message;
   

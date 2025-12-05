@@ -7,9 +7,6 @@ import '../widgets/loading_widget.dart';
 import '../utils/constants.dart';
 import '../routes/app_routes.dart';
 
-/// Favorites Page
-/// 
-/// List of favorite cities
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({Key? key}) : super(key: key);
@@ -23,7 +20,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
   void initState() {
     super.initState();
     
-    // Load favorites on page load
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<FavoritesProvider>().loadFavorites();
     });
@@ -34,7 +30,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
     await context.read<WeatherProvider>().fetchWeatherByCity(cityName);
     
     if (mounted) {
-      // Navigate to details page
       AppRoutes.navigateToWeatherDetails(context);
     }
   }

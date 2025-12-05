@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
-/// Error Display Widget
-/// 
-/// Shows error messages with retry option
+
 
 class ErrorDisplayWidget extends StatelessWidget {
   final String error;

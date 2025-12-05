@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/city_model.dart';
 import '../utils/constants.dart';
 
-/// Favorite City Card Widget
-/// 
-/// Displays a favorite city with delete option
+
 
 class FavoriteCityCard extends StatelessWidget {
   final CityModel city;

@@ -4,9 +4,7 @@ import '../pages/weather_details_page.dart';
 import '../pages/favorites_page.dart';
 import '../pages/settings_page.dart';
 
-/// App Routes
-/// 
-/// Centralized route management
+
 
 class AppRoutes {
   // Route Names
@@ -15,7 +13,6 @@ class AppRoutes {
   static const String favorites = '/favorites';
   static const String settings = '/settings';
   
-  // Route Generator
 static Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case AppRoutes.home:
@@ -42,7 +39,6 @@ static Route<dynamic> generateRoute(RouteSettings routeSettings) {
 }
 
   
-  // Navigation Helper Methods
   static void navigateToHome(BuildContext context) {
     Navigator.pushNamedAndRemoveUntil(context, home, (route) => false);
   }

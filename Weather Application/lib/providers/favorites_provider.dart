@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/city_model.dart';
 import '../services/storage_service.dart';
 
-/// Favorites Provider
-/// 
-/// Manages favorite cities list
+
 
 class FavoritesProvider with ChangeNotifier {
   List<CityModel> _favorites = [];
@@ -15,7 +13,6 @@ class FavoritesProvider with ChangeNotifier {
   bool get hasFavorites => _favorites.isNotEmpty;
   int get favoritesCount => _favorites.length;
   
-  /// Load favorites from storage
   Future<void> loadFavorites() async {
     _isLoading = true;
     notifyListeners();
@@ -31,14 +28,12 @@ class FavoritesProvider with ChangeNotifier {
     notifyListeners();
   }
   
-  /// Check if city is in favorites
   bool isFavorite(String cityName, String country) {
     return _favorites.any((city) =>
         city.name.toLowerCase() == cityName.toLowerCase() &&
         city.country.toLowerCase() == country.toLowerCase());
   }
   
-  /// Add city to favorites
   Future<bool> addFavorite(String cityName, String country) async {
     // Check if already exists
     if (isFavorite(cityName, country)) {
@@ -63,7 +58,6 @@ class FavoritesProvider with ChangeNotifier {
     }
   }
   
-  /// Remove city from favorites
   Future<bool> removeFavorite(String cityName, String country) async {
     final city = _favorites.firstWhere(
       (c) =>
@@ -92,7 +86,6 @@ class FavoritesProvider with ChangeNotifier {
     }
   }
   
-  /// Toggle favorite status
   Future<bool> toggleFavorite(String cityName, String country) async {
     if (isFavorite(cityName, country)) {
       return await removeFavorite(cityName, country);
@@ -101,7 +94,6 @@ class FavoritesProvider with ChangeNotifier {
     }
   }
   
-  /// Clear all favorites
   Future<void> clearAllFavorites() async {
     try {
       await StorageService.clearFavorites();
@@ -112,7 +104,6 @@ class FavoritesProvider with ChangeNotifier {
     }
   }
   
-  /// Get favorite city names for batch weather fetching
   List<String> getFavoriteCityNames() {
     return _favorites.map((city) => city.name).toList();
   }

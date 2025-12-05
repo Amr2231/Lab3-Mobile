@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
-/// Loading Widget
-/// 
-/// Displays loading indicator
+
 
 class LoadingWidget extends StatelessWidget {
   final String? message;

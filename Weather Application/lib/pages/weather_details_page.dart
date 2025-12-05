@@ -7,9 +7,7 @@ import '../utils/constants.dart';
 import '../utils/helpers.dart';
 import '../config/api_config.dart';
 
-/// Weather Details Page
-/// 
-/// Detailed weather information screen
+
 
 class WeatherDetailsPage extends StatelessWidget {
   const WeatherDetailsPage({Key? key}) : super(key: key);
@@ -30,7 +28,6 @@ class WeatherDetailsPage extends StatelessWidget {
           
           return CustomScrollView(
             slivers: [
-              // App Bar with gradient
               SliverAppBar(
                 expandedHeight: 300,
                 pinned: true,
@@ -47,7 +44,6 @@ class WeatherDetailsPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Location
                             Row(
                               children: [
                                 const Icon(
@@ -69,7 +65,6 @@ class WeatherDetailsPage extends StatelessWidget {
                             
                             const SizedBox(height: 8),
                             
-                            // Date and Time
                             Text(
                               WeatherHelpers.getFullDateTime(
                                 weather.dt,
@@ -82,7 +77,6 @@ class WeatherDetailsPage extends StatelessWidget {
                             
                             const SizedBox(height: 24),
                             
-                            // Temperature and Icon
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
@@ -164,7 +158,6 @@ class WeatherDetailsPage extends StatelessWidget {
                 ],
               ),
               
-              // Weather Details
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
@@ -179,7 +172,6 @@ class WeatherDetailsPage extends StatelessWidget {
                       
                       const SizedBox(height: 24),
                       
-                      // Details Grid
                       GridView.count(
                         crossAxisCount: 2,
                         shrinkWrap: true,
@@ -221,7 +213,6 @@ class WeatherDetailsPage extends StatelessWidget {
                       
                       const SizedBox(height: 24),
                       
-                      // Sun Times
                       Text(
                         'Sun Times',
                         style: AppTextStyles.heading3,
@@ -269,7 +260,6 @@ class WeatherDetailsPage extends StatelessWidget {
                       
                       const SizedBox(height: 24),
                       
-                      // Temperature Range (if available)
                       if (weather.tempMin != null && weather.tempMax != null)
                         Container(
                           padding: const EdgeInsets.all(20),

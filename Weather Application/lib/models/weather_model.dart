@@ -1,6 +1,4 @@
-/// Weather Data Model
-/// 
-/// Represents the complete weather information from OpenWeatherMap API
+
 
 class WeatherModel {
   final String cityName;
@@ -19,7 +17,7 @@ class WeatherModel {
   final int visibility;
   final double? tempMin;
   final double? tempMax;
-  final int dt; // Current time
+  final int dt; 
   
   WeatherModel({
     required this.cityName,
@@ -41,7 +39,6 @@ class WeatherModel {
     required this.dt,
   });
   
-  /// Create WeatherModel from JSON response
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
       cityName: json['name'] ?? 'Unknown',
@@ -64,7 +61,6 @@ class WeatherModel {
     );
   }
   
-  /// Convert WeatherModel to JSON
   Map<String, dynamic> toJson() {
     return {
       'name': cityName,
@@ -91,10 +87,8 @@ class WeatherModel {
     };
   }
   
-  /// Get full location string
   String get fullLocation => '$cityName, $country';
   
-  /// Copy with method for updates
   WeatherModel copyWith({
     String? cityName,
     String? country,

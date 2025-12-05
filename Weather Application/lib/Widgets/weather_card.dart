@@ -4,9 +4,7 @@ import '../utils/constants.dart';
 import '../utils/helpers.dart';
 import '../config/api_config.dart';
 
-/// Weather Card Widget
-/// 
-/// Main card displaying current weather
+
 
 class WeatherCard extends StatelessWidget {
   final WeatherModel weather;
@@ -54,7 +52,6 @@ class WeatherCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Location
             Row(
               children: [
                 const Icon(
@@ -76,7 +73,6 @@ class WeatherCard extends StatelessWidget {
             
             const SizedBox(height: 8),
             
-            // Date
             Text(
               WeatherHelpers.formatDate(weather.dt),
               style: AppTextStyles.caption.copyWith(
@@ -86,7 +82,6 @@ class WeatherCard extends StatelessWidget {
             
             const SizedBox(height: 24),
             
-            // Weather Icon and Temperature
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -114,7 +109,6 @@ class WeatherCard extends StatelessWidget {
                 
                 const SizedBox(width: 16),
                 
-                // Temperature and Description
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,7 +138,6 @@ class WeatherCard extends StatelessWidget {
             
             const SizedBox(height: 24),
             
-            // Quick Stats
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [

@@ -1,6 +1,4 @@
-/// City Model for Favorites
-/// 
-/// Simple model to store favorite cities
+
 
 class CityModel {
   final String name;
@@ -13,7 +11,6 @@ class CityModel {
     DateTime? addedAt,
   }) : addedAt = addedAt ?? DateTime.now();
   
-  /// Create CityModel from JSON
   factory CityModel.fromJson(Map<String, dynamic> json) {
     return CityModel(
       name: json['name'] ?? '',
@@ -24,7 +21,6 @@ class CityModel {
     );
   }
   
-  /// Convert CityModel to JSON
   Map<String, dynamic> toJson() {
     return {
       'name': name,
@@ -33,10 +29,8 @@ class CityModel {
     };
   }
   
-  /// Get full location string
   String get fullLocation => country.isEmpty ? name : '$name, $country';
   
-  /// Create from WeatherModel
   factory CityModel.fromWeather(String cityName, String country) {
     return CityModel(
       name: cityName,
@@ -44,7 +38,6 @@ class CityModel {
     );
   }
   
-  /// Check if two cities are the same
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;

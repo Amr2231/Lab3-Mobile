@@ -1,35 +1,26 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 
-/// Location Service
-/// 
-/// Handles GPS location and geocoding
 
 class LocationService {
-  /// Check if location services are enabled
   static Future<bool> isLocationServiceEnabled() async {
     return await Geolocator.isLocationServiceEnabled();
   }
   
-  /// Check location permission
   static Future<LocationPermission> checkPermission() async {
     return await Geolocator.checkPermission();
   }
   
-  /// Request location permission
   static Future<LocationPermission> requestPermission() async {
     return await Geolocator.requestPermission();
   }
   
-  /// Get current position
   static Future<Position> getCurrentPosition() async {
-    // Check if location services are enabled
     bool serviceEnabled = await isLocationServiceEnabled();
     if (!serviceEnabled) {
       throw LocationException('Location services are disabled.');
     }
     
-    // Check permission
     LocationPermission permission = await checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await requestPermission();
@@ -44,13 +35,11 @@ class LocationService {
       );
     }
     
-    // Get position
     return await Geolocator.getCurrentPosition(
       desiredAccuracy: LocationAccuracy.high,
     );
   }
   
-  /// Get city name from coordinates
   static Future<String> getCityFromCoordinates(
     double latitude,
     double longitude,
@@ -72,7 +61,6 @@ class LocationService {
     }
   }
   
-  /// Get current location coordinates and city name
   static Future<Map<String, dynamic>> getCurrentLocationInfo() async {
     try {
       final position = await getCurrentPosition();
@@ -92,7 +80,6 @@ class LocationService {
   }
 }
 
-/// Custom Exception for Location errors
 class LocationException implements Exception {
   final String message;
   

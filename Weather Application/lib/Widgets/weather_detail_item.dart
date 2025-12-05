@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import '../utils/constants.dart';
 
-/// Weather Detail Item Widget
-/// 
-/// Displays a single weather detail with icon
+
 
 class WeatherDetailItem extends StatelessWidget {
   final IconData icon;
@@ -62,7 +60,6 @@ class WeatherDetailItem extends StatelessWidget {
   }
 }
 
-/// Weather Detail Item - Horizontal Layout
 class WeatherDetailItemHorizontal extends StatelessWidget {
   final IconData icon;
   final String label;

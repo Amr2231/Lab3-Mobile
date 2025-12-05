@@ -9,9 +9,7 @@ import '../utils/constants.dart';
 import '../utils/helpers.dart';
 import '../routes/app_routes.dart';
 
-/// Home Page
-/// 
-/// Main search screen with city input
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -27,7 +25,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     
-    // Load settings and last searched city on app start
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final settingsProvider = context.read<SettingsProvider>();
       final weatherProvider = context.read<WeatherProvider>();

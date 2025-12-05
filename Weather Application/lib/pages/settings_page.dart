@@ -4,9 +4,6 @@ import '../providers/settings_provider.dart';
 import '../providers/weather_provider.dart';
 import '../utils/constants.dart';
 
-/// Settings Page
-/// 
-/// App settings and preferences
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -22,7 +19,6 @@ class SettingsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          // Temperature Unit Section
           _buildSectionHeader('Temperature Unit'),
           
           Consumer<SettingsProvider>(
@@ -69,11 +65,9 @@ class SettingsPage extends StatelessWidget {
                       if (value != null) {
                         await settingsProvider.setTemperatureUnit(value);
                         
-                        // Update weather provider
                         final weatherProvider = context.read<WeatherProvider>();
                         weatherProvider.setTemperatureUnit(value);
                         
-                        // Refresh weather data
                         if (weatherProvider.hasWeather) {
                           await weatherProvider.refreshWeather();
                         }
@@ -96,7 +90,6 @@ class SettingsPage extends StatelessWidget {
           
           const Divider(height: 1),
           
-          // About Section
           _buildSectionHeader('About'),
           
           ListTile(
@@ -131,7 +124,6 @@ class SettingsPage extends StatelessWidget {
           
           const Divider(height: 1),
           
-          // Developer Section
           _buildSectionHeader('Developer'),
           
           ListTile(
@@ -163,7 +155,6 @@ class SettingsPage extends StatelessWidget {
           
           const SizedBox(height: 32),
           
-          // Reset Button
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: OutlinedButton.icon(

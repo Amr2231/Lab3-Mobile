@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import '../services/storage_service.dart';
 import '../utils/constants.dart';
 
-/// Settings Provider
-/// 
-/// Manages app settings like temperature unit
+
 
 class SettingsProvider with ChangeNotifier {
   String _temperatureUnit = AppConstants.defaultUnit;
@@ -18,7 +16,6 @@ class SettingsProvider with ChangeNotifier {
   String get unitSymbol => isMetric ? '°C' : '°F';
   String get unitName => isMetric ? 'Celsius' : 'Fahrenheit';
   
-  /// Initialize settings from storage
   Future<void> loadSettings() async {
     _isLoading = true;
     notifyListeners();
@@ -34,7 +31,6 @@ class SettingsProvider with ChangeNotifier {
     notifyListeners();
   }
   
-  /// Set temperature unit
   Future<void> setTemperatureUnit(String unit) async {
     if (unit != AppConstants.metric && unit != AppConstants.imperial) {
       return;
@@ -50,13 +46,11 @@ class SettingsProvider with ChangeNotifier {
     }
   }
   
-  /// Toggle between Celsius and Fahrenheit
   Future<void> toggleTemperatureUnit() async {
     final newUnit = isMetric ? AppConstants.imperial : AppConstants.metric;
     await setTemperatureUnit(newUnit);
   }
   
-  /// Convert temperature to current unit
   double convertTemperature(double celsius) {
     if (isImperial) {
       return (celsius * 9 / 5) + 32;
@@ -64,7 +58,6 @@ class SettingsProvider with ChangeNotifier {
     return celsius;
   }
   
-  /// Reset settings to default
   Future<void> resetSettings() async {
     await setTemperatureUnit(AppConstants.defaultUnit);
   }
